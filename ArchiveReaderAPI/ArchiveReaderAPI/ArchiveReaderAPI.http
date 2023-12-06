@@ -1,0 +1,6 @@
+@ArchiveReaderAPI_HostAddress = http://localhost:5022
+
+GET {{ArchiveReaderAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

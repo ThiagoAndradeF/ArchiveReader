@@ -1,4 +1,4 @@
-using ArchiveReader.Repository;
+using ArchiveReaderAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,9 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IReaderRepository, ReaderRepository>();
+builder.Services.AddScoped<IArquivo,Arquivo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
