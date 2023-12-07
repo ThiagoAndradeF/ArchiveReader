@@ -14,24 +14,11 @@ namespace ArchiveReaderAPI.Controllers
             _arquivo = arquivo;
         }
 
-        [HttpPost("/definirDiretorio")]
-        public IActionResult definirDiretorio([FromBody] string caminhoDiretorio){
-            try
-            {
-                _arquivo.SetDiretory(caminhoDiretorio);
-                return Ok("Diretorio de arquivos definido com sucesso");
-            }
-            catch (System.Exception e )
-            {
-                return StatusCode(500, e.Message);
-            }
-        }
-
         [HttpPost("/adicionar")]
         public IActionResult adicionarArquivo([FromBody]ArquivoDto arquivo){
             try
             {
-                _arquivo.CreateFile(arquivo);
+                _arquivo.CreateFile(arquivo, DiretorioController.CaminhoDiretorio);
                 return Ok("Arquivo adicionar com sucesso ");
             }
             catch (System.Exception e )
@@ -44,7 +31,7 @@ namespace ArchiveReaderAPI.Controllers
         public IActionResult editarConteudoArquivo([FromBody]ArquivoDto arquivo){
             try
             {
-                _arquivo.SetContent(arquivo);
+                _arquivo.SetContent(arquivo, DiretorioController.CaminhoDiretorio);
                 return Ok("Arquivo editado com sucesso");
             }
             catch (System.Exception e )
@@ -58,7 +45,7 @@ namespace ArchiveReaderAPI.Controllers
         public string editarConteudoArquivo(string tituloArquivo){
             try
             {
-                return _arquivo.GetContent(tituloArquivo);
+                return _arquivo.GetContent(tituloArquivo,DiretorioController.CaminhoDiretorio);
             }
             catch (System.Exception e )
             {
@@ -69,7 +56,7 @@ namespace ArchiveReaderAPI.Controllers
         public IActionResult excluirArquivo(string tituloArquivo){
             try
             {
-                 _arquivo.DeleteFile(tituloArquivo);
+                 _arquivo.DeleteFile(tituloArquivo,DiretorioController.CaminhoDiretorio);
                  return Ok("Arquivo excluido com sucesso");
             }
             catch (System.Exception e )

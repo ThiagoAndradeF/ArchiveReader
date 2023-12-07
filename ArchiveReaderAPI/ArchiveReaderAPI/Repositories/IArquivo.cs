@@ -2,9 +2,8 @@ using ArchiveReaderAPI.Models;
 
 namespace ArchiveReaderAPI.Repositories;
 public  interface IArquivo {
-    public bool SetDiretory(string pastaDiretorio);
-    public string GetContent(string titulo);
-    public bool SetContent(ArquivoDto arquivo);
-    public bool CreateFile(ArquivoDto arquivo);
-    public bool DeleteFile(string titulo);
+    public string GetContent(string titulo, string pastaDiretorio);
+    public bool SetContent(ArquivoDto arquivo, string pastaDiretorio);
+    public bool CreateFile(ArquivoDto arquivo, string pastaDiretorio);
+    public bool DeleteFile(string titulo, string pastaDiretorio);
 }
